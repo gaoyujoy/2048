@@ -1,0 +1,63 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+ul {
+  margin: 1.5rem 0;
+  padding: 0;
+  float: left;
+}
+
+ul li {
+  list-style: none;
+  border: 2px solid black;
+  width: 2.5rem;
+  height: 2.5rem;
+  float: left;
+}
+
+ul li span {
+  display: inline-block;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+  font-size: 1.7rem;
+}
+.span-2{
+  background-color: #BC8F8F;
+}
+.span-4{
+background-color: #D2691E ;
+}
+.span-8{
+background-color: #FF4500;
+}
+.span-16{
+background-color: #CD853F;
+}
+.span-32{
+background-color: #FFE4B5;
+}
+.span-64{
+background-color: #D87093;
+}
+.span-128{
+background-color: #FF1493;
+}
+.span-256{
+background-color: #800000;
+}
+.span-512{
+background-color: #CCEEFF;
+}
+.span-1024{
+background-color: #77DDFF;
+}
+.span-2048{
+background-color: #33CCFF;
+}
