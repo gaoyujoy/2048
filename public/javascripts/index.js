@@ -140,15 +140,16 @@
                     y: e.originalEvent.changedTouches[0].screenY
                 }
                 todo.changeNum(todo.fng(start, end));
-                var list_0 = todo.vue.todos.filter((x) => { 
+                var list_0 = todo.vue.todos.filter((x) => {
                     return x == 0;
-                })
-                todo.getNumb(list_0.length);
-                if((todo.vue.todos.filter((x) => { 
-                    return x == 0;
-                })).length==0) {
-                    alert('Game over!');
+                });
+                if (list_0.length < 2) { 
+                    alert('游戏结束，最高分：'+Math.max.apply(null, todo.vue.todos)+'，点击确定重新开始。');
+                    todo.vue.todos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                    todo.getNumb(16);
+                    return;
                 }
+                todo.getNumb(list_0.length);
             }).on('touchmove', (e) => {
                 e.preventDefault();
             })
