@@ -23,7 +23,7 @@ var todo = {
             }
         }
         var list = $.extend([], todo.vue.todos);
-        todo.vue.todos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        // todo.vue.todos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         var j = -1;
         for (var i = 0; i < list.length; i++) {
             if (list[i] == 0) {
