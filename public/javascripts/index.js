@@ -11,7 +11,7 @@ var todo = {
     init: () => {
         todo.getNumb(16);
         todo.binds();
-
+        todo.backgournd_animation();
     },
     getNumb: (x) => {
         var first = Math.ceil(Math.random() * x) - 1;
@@ -161,6 +161,14 @@ var todo = {
         }).on('touchmove', (e) => {
             e.preventDefault();
         })
+    },
+    backgournd_animation: () => { 
+        var div = $('#app');
+        var i = 1;
+        setInterval(() => {
+            div.css('background-image', 'url(/images/background' + i + '.jpg)');
+            i == 6 ? i = 1 : i++;
+        }, 4000);
     }
 };
 todo.init();
