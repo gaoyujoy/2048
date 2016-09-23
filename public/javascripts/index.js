@@ -11,7 +11,7 @@ var todo = {
     init: () => {
         todo.getNumb(16);
         todo.binds();
-        todo.backgournd_animation();
+        // todo.backgournd_animation();
     },
     getNumb: (x) => {
         var first = Math.ceil(Math.random() * x) - 1;

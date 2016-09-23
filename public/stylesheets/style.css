@@ -12,7 +12,7 @@ body {
 #app {
   height: 100%;
   width: 100%;
-  background-image: url(/images/background1.jpg);
+  background-image: url(/images/background2.jpg);
   transition: background-image 1s;
   -webkit-transition: background-image 1s;
   background-repeat: no-repeat;
