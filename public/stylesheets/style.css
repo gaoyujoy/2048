@@ -32,7 +32,7 @@ ul {
 
 ul li {
   list-style: none;
-  border: 2px solid black;
+  border: 2px solid white;
   width: 2.5rem;
   height: 2.5rem;
   float: left;
