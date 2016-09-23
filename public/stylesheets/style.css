@@ -6,10 +6,11 @@ body {
   background-image: url(/images/background.jpg);
   background-repeat: no-repeat;
   background-size: contain;
-  height: 100%;
+  width:100%;
 }
 #app{
     height: 100%;
+    position: absolute;
     background-color: white;
     opacity: 0.7;
 }
