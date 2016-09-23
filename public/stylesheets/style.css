@@ -21,13 +21,61 @@ ul li {
 }
 
 ul li span {
-  display: inline-block;
-  width: 2.5rem;
-  height: 2.5rem;
-  line-height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   text-align: center;
   font-size: 1.7rem;
 }
+.bounce-transition{
+  animation: myAnimation 0.5s;
+  -moz-animation: myAnimation 0.5s;
+  /* Firefox */
+  -webkit-animation: myAnimation 0.5s;
+  /* Safari and Chrome */
+  -o-animation: myAnimation 0.5s;
+  /* Opera */
+}
+.animate-span {
+  animation: myAnimation 0.5s;
+  -moz-animation: myAnimation 0.5s;
+  /* Firefox */
+  -webkit-animation: myAnimation 0.5s;
+  /* Safari and Chrome */
+  -o-animation: myAnimation 0.5s;
+  /* Opera */
+}
+
+@keyframes myAnimation {
+  0% {
+    width: 50%;
+    height: 50%;
+    margin-top: 25%;
+    margin-left: 25%;
+  }
+  25% {
+    width: 100%;
+    height: 100%;
+    margin-top: 0%;
+    margin-left: 0%;
+  }
+  50% {
+    width: 75%;
+    height: 75%;
+    margin-top: 12.5%;
+    margin-left: 12.5%;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    margin-top: 0%;
+    margin-left: 0%;
+  }
+}
+
+@-webkit-keyframes myAnimation {}
 
 .span-2 {
   background-color: #BC8F8F;
@@ -59,10 +107,12 @@ ul li span {
 }
 
 .span-256 {
+  font-size: 1.2rem;
   background-color: #800000;
 }
 
 .span-512 {
+  font-size: 1.2rem;
   background-color: #CCEEFF;
 }
 
