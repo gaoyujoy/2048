@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
 });
 router.get('/get', function (req, res, next) {
   res.send({
-    todos: [1, 1, 1, 1, 1,1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1]
+    message: "甜甜的白菜，我永远永远都只爱你！"
   });
 });
 module.exports = router;

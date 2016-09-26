@@ -147,3 +147,8 @@ ul li span {
   font-size: 0.9rem;
   background-color: #33CCFF;
 }
+.span-4096 {
+  font-size: 0.9rem;
+  color: white;
+  background-color:#000000;
+}

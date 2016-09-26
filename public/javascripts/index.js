@@ -41,7 +41,7 @@ var todo = {
             }
         }
 
-        setTimeout(() => { 
+        setTimeout(() => {
             todo.vue.todos = list
         }, 1);
 
@@ -113,6 +113,19 @@ var todo = {
                         if (todoList[thislist[y]] == todoList[thislist[x - 1]]) {
                             todoList[thislist[y]] *= 2;
                             todoList[thislist[x - 1]] = 0;
+                            var b = y;
+                            while (true) {
+                                if (todoList[thislist[b]] == todoList[thislist[b + 1]]) {
+                                    todoList[thislist[b + 1]] *= 2;
+                                    todoList[thislist[b]] = 0;
+                                    b++;
+                                } else {
+                                    break;
+                                }
+                            }
+                        } else {
+                            x = y;
+                            y--;
                         }
                     } else {
                         if (todoList[thislist[y + 1]] == todoList[thislist[x - 1]]) {
@@ -124,8 +137,7 @@ var todo = {
                         }
 
                     }
-                    x = y;
-                    y--;
+
                 }
                 x--;
                 if (x == 0) {
@@ -151,18 +163,31 @@ var todo = {
             var list_0 = todo.vue.todos.filter((x) => {
                 return x == 0;
             });
-            if (list_0.length < 2) {
-                alert('游戏结束，最高分：' + Math.max.apply(null, todo.vue.todos) + '，点击确定重新开始。');
-                todo.vue.todos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                todo.getNumb(16);
-                return;
+            if (Math.max.apply(null, todo.vue.todos) == 2048) {
+                $.get('/get', (res) => {
+                    alert('达到了' + Math.max.apply(null, todo.vue.todos) + '分，点击确定查看隐藏话！');
+                    alert(res.message);
+                    alert(res.message);
+                    alert(res.message + '，最重要的事情要说三遍！');
+                    todo.isEnd(list_0);
+                }, 'json');
+            } else {
+                todo.isEnd(list_0);
             }
-            todo.getNumb(list_0.length);
         }).on('touchmove', (e) => {
             e.preventDefault();
         })
     },
-    backgournd_animation: () => { 
+    isEnd: (list_0) => {
+        if (list_0.length < 2) {
+            alert('游戏结束，最高分：' + Math.max.apply(null, todo.vue.todos) + '，点击确定重新开始。');
+            todo.vue.todos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            todo.getNumb(16);
+            return;
+        }
+        todo.getNumb(list_0.length);
+    },
+    backgournd_animation: () => {
         var div = $('#app');
         var i = 1;
         setInterval(() => {
