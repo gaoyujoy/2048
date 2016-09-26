@@ -3,12 +3,12 @@ var router = express.Router();
 // var env = require('../nunjucks-config');
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/', (req, res, next) => {
   res.render('index.html', {
     title: '好甜的白菜'
   });
 });
-router.get('/get', function (req, res, next) {
+router.get('/get', (req, res, next) => {
   res.send({
     message: "甜甜的白菜，我永远永远都只爱你！"
   });
