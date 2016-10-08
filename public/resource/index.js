@@ -11,19 +11,24 @@ var todo = {
         }
     }),
     init: function init() {
-        todo.getNumb(16);
+        todo.getNumb(16, true);
         todo.binds();
         // todo.backgournd_animation();
     },
     getNumb: function getNumb(x) {
+        var isSecend = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
+
         var first = Math.ceil(Math.random() * x) - 1;
-        var secend;
-        while (true) {
-            secend = Math.ceil(Math.random() * x) - 1;
-            if (secend != first) {
-                break;
+        if (isSecend) {
+            var secend;
+            while (true) {
+                secend = Math.ceil(Math.random() * x) - 1;
+                if (secend != first) {
+                    break;
+                }
             }
         }
+
         var list = $.extend([], todo.vue.todos);
         // todo.vue.todos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         var j = -1;
@@ -36,7 +41,7 @@ var todo = {
                 list[i] = 2;
                 first = -1;
             }
-            if (j == secend) {
+            if (isSecend && j == secend) {
                 todo.vue.secend = i;
                 list[i] = 2;
                 secend = -1;
@@ -115,31 +120,23 @@ var todo = {
                         if (todoList[thislist[y]] == todoList[thislist[x - 1]]) {
                             todoList[thislist[y]] *= 2;
                             todoList[thislist[x - 1]] = 0;
-                            var b = y;
-                            while (true) {
-                                if (todoList[thislist[b]] == todoList[thislist[b + 1]]) {
-                                    todoList[thislist[b + 1]] *= 2;
-                                    todoList[thislist[b]] = 0;
-                                    b++;
-                                } else {
-                                    break;
-                                }
-                            }
+                            y--;
                         } else {
                             x = y;
                             y--;
                         }
                     } else {
-                        if (todoList[thislist[y + 1]] == todoList[thislist[x - 1]]) {
-                            todoList[thislist[y + 1]] = todoList[thislist[y + 1]] * 2;
-                            todoList[thislist[x - 1]] = 0;
-                        } else {
-                            todoList[thislist[y]] = todoList[thislist[x - 1]];
-                            todoList[thislist[x - 1]] = 0;
-                        }
+                        // if (todoList[thislist[y + 1]] == todoList[thislist[x - 1]]) {
+                        //     todoList[thislist[y + 1]] = todoList[thislist[y + 1]] * 2;
+                        //     todoList[thislist[x - 1]] = 0;
+                        // } else {
+                        todoList[thislist[y]] = todoList[thislist[x - 1]];
+                        todoList[thislist[x - 1]] = 0;
+                        // }
                     }
                 }
                 x--;
+
                 if (x == 0) {
                     break;
                 }
@@ -163,17 +160,7 @@ var todo = {
             var list_0 = todo.vue.todos.filter(function (x) {
                 return x == 0;
             });
-            if (Math.max.apply(null, todo.vue.todos) == 2048) {
-                $.get('/get', function (res) {
-                    alert('达到了' + Math.max.apply(null, todo.vue.todos) + '分，点击确定查看隐藏话！');
-                    alert(res.message);
-                    alert(res.message);
-                    alert(res.message + '，最重要的事情要说三遍！');
-                    todo.isEnd(list_0);
-                }, 'json');
-            } else {
-                todo.isEnd(list_0);
-            }
+            todo.isEnd(list_0);
         }).on('touchmove', function (e) {
             e.preventDefault();
         });
@@ -182,18 +169,10 @@ var todo = {
         if (list_0.length < 2) {
             alert('游戏结束，最高分：' + Math.max.apply(null, todo.vue.todos) + '，点击确定重新开始。');
             todo.vue.todos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-            todo.getNumb(16);
+            todo.getNumb(16, true);
             return;
         }
         todo.getNumb(list_0.length);
-    },
-    backgournd_animation: function backgournd_animation() {
-        var div = $('#app');
-        var i = 1;
-        setInterval(function () {
-            div.css('background-image', 'url(/images/background' + i + '.jpg)');
-            i == 6 ? i = 1 : i++;
-        }, 4000);
     }
 };
 todo.init();

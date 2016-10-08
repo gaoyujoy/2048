@@ -116,31 +116,14 @@ var todo = {
                         if (todoList[thislist[y]] == todoList[thislist[x - 1]]) {
                             todoList[thislist[y]] *= 2;
                             todoList[thislist[x - 1]] = 0;
-                            // var b = y;
-                            // while (true) {
-                            //     if (todoList[thislist[b]] == todoList[thislist[b + 1]]) {
-                            //         todoList[thislist[b + 1]] *= 2;
-                            //         todoList[thislist[b]] = 0;
-                            //         b++;
-                            //     } else {
-                            //         break;
-                            //     }
-                            // }
                         } else {
                             x = y;
-                            y--;
                         }
+                        y--;
                     } else {
-                        if (todoList[thislist[y + 1]] == todoList[thislist[x - 1]]) {
-                            todoList[thislist[y + 1]] = todoList[thislist[y + 1]] * 2;
-                            todoList[thislist[x - 1]] = 0;
-                        } else {
-                            todoList[thislist[y]] = todoList[thislist[x - 1]];
-                            todoList[thislist[x - 1]] = 0;
-                        }
-
+                        todoList[thislist[y]] = todoList[thislist[x - 1]];
+                        todoList[thislist[x - 1]] = 0;
                     }
-
                 }
                 x--;
                 if (x == 0) {
@@ -175,18 +158,10 @@ var todo = {
         if (list_0.length < 2) {
             alert('游戏结束，最高分：' + Math.max.apply(null, todo.vue.todos) + '，点击确定重新开始。');
             todo.vue.todos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-            todo.getNumb(16);
+            todo.getNumb(16, true);
             return;
         }
         todo.getNumb(list_0.length);
-    },
-    backgournd_animation: () => {
-        var div = $('#app');
-        var i = 1;
-        setInterval(() => {
-            div.css('background-image', 'url(/images/background' + i + '.jpg)');
-            i == 6 ? i = 1 : i++;
-        }, 4000);
     }
 };
 todo.init();
