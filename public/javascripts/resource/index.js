@@ -155,7 +155,7 @@ var todo = {
         })
     },
     isEnd: (list_0) => {
-        if (list_0.length < 2) {
+        if (list_0.length < 1) {
             alert('游戏结束，最高分：' + Math.max.apply(null, todo.vue.todos) + '，点击确定重新开始。');
             todo.vue.todos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
             todo.getNumb(16, true);
